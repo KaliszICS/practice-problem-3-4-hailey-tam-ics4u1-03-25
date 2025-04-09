@@ -4,24 +4,40 @@ public class PracticeProblem {
 
 	}
 
-	public static void q1() {
-		//Write question 1 code here
+	public static int[] recaman(int n){
+		int[] arr = {};
+		if (n <= 0){
+			return arr;
+		}
+		arr = new int[n];
+		recamanHelper(n, 0, 0, arr);
+		return arr;
 	}
 
-	public static void q2() {
-		//Write question 2 code here
-	}
+	public static void recamanHelper(int n, int a, int index, int[] arr){
 
-	public static void q3() {
-		//Write question 3 code here
-	}
+		if (index == n){
+			return ;
+		}
+		
+		int nextNum = a - (index + 1);
+		boolean valid = true;
+		if (nextNum > 0){
+		for (int i = 0; i < index; i++){
+			if (arr[i] == nextNum){
+				valid = false;
+				i = index;
+				}
+			}
+		}
+		else {
+			valid = false;
+		}
 
-	public static void q4() {
-		//Write question 4 code here
+		if (!valid){
+			nextNum = a + (index + 1);
+		}
+		arr[index] = nextNum;
+		recamanHelper(n, nextNum, index + 1, arr);
 	}
-
-	public static void q5() {
-		//Write question 5 code here
-	}
-
 }
